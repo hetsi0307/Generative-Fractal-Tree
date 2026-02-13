@@ -2,19 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hand Controlled Fractal Tree</title>
-    <!-- Load MediaPipe and p5.js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Tracking Fractal Tree</title>
+    
+    <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
     <style>
-        body { margin: 0; background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        canvas { border-radius: 10px; box-shadow: 0 0 20px rgba(0,255,150,0.2); }
-        #video-container { position: absolute; top: 10px; left: 10px; width: 160px; height: 120px; border: 2px solid white; display:none; }
+        body { 
+            margin: 0; 
+            background: #0b0b0b; 
+            color: white; 
+            font-family: sans-serif;
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        #ui-container {
+            position: absolute;
+            z-index: 10;
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #00ff96;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background: #00cc78;
+        }
+        canvas { position: absolute; top: 0; left: 0; }
+        video { display: none; }
     </style>
 </head>
 <body>
-    <video id="input_video" style="display:none"></video>
+
+    <div id="ui-container">
+        <h1>Fractal Tree AI</h1>
+        <p>Move your hand to grow the tree</p>
+        <button id="start-btn">Start Camera</button>
+        <p id="status"></p>
+    </div>
+
+    <video id="input_video"></video>
+
     <script src="sketch.js"></script>
 </body>
 </html>
